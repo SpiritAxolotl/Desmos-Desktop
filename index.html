@@ -3,24 +3,18 @@
     <head>
         <meta charset="utf-8" />
         <title>Desmos</title>
-
         <link rel="stylesheet" href="./src/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="./src/css/calculator.css" type="text/css" />
     </head>
-
-
     <body>
         <div id="calculator"> </div>
-
         <div id="container"> </div>
-
+        <script src="./src/js/calculator.js"></script>
+        <script>
+            const elt = document.getElementById('calculator');
+            const calculator = Desmos.GraphingCalculator(elt);
+            calculator.setExpression({id:'graph1', latex:'y= x^2'});
+        </script>
+        <script src="./renderer.js"></script>
     </body>
-    <script src="./src/js/calculator.js"></script>
-
-
-    <script>
-        var elt = document.getElementById('calculator');
-        var calculator = Desmos.GraphingCalculator(elt);
-        calculator.setExpression({id:'graph1', latex:'y= x^2'});
-    </script>
-    <script src="./renderer.js"></script>
 </html>
