@@ -24,7 +24,7 @@ cd dist && ls   # WOW! Then move the package wherever you want.
 
 On linux, you need edit ./res/appimagekit-desmos.desktop properly and move it to ./local/share/applications.
 
-## Dependency
+## Dependencies
 - [Node.js](https://nodejs.org/en/)
 - [Electron](http://electron.atom.io/)
 - [Desmos API](https://www.desmos.com/api/)
@@ -44,10 +44,10 @@ Now you can use this simple app to
 Try open `.des` files in 'examples'.
 
 <!--add alt text to these at some point-->
-<img src="res/Cardioid.png" width="200"/> <img src="res/Folded Conic Section.png" width="200"/> <img src="res/Folded Conic Section2.png" width="200"/>
+<img src="res/examples/Cardioid.png" width="200"/> <img src="res/examples/Folded Conic Section.png" width="200"/> <img src="res/examples/Folded Conic Section2.png" width="200"/>
 
-<img src="res/Folded Conic Section3.png" width="200"/> <img src="res/Brain.png" width="200"/> <img src="res/Mobius2.png" width="200"/>
+<img src="res/examples/Folded Conic Section3.png" width="200"/> <img src="res/examples/Brain.png" width="200"/> <img src="res/examples/Mobius2.png" width="200"/>
 
-<img src="res/Mobius.png" width="200"/> <img src="res/Astroid.png" width="200"/> <img src="res/Powerpuff Grils.png" width="200"/>
+<img src="res/examples/Mobius.png" width="200"/> <img src="res/examples/Astroid.png" width="200"/> <img src="res/examples/Powerpuff Grils.png" width="200"/>
 
 Hope this helpful. Enjoy ;)
