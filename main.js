@@ -24,28 +24,30 @@ function sendReq(msg, data=null) {
 const menuTemplate = [
     {
         label: 'File',
-        submenu : [
+        submenu: [
             {
                 label: 'New', accelerator: 'CmdOrCtrl+N',
-                click () {  sendReq('NewFile'); }
+                click() { sendReq('NewFile'); }
             },{
                 label: 'Open', accelerator: 'CmdOrCtrl+O',
-                click () {  sendReq('OpenFile');    }
+                click() { sendReq('OpenFile'); }
             },{
                 label: 'Save', accelerator: 'CmdOrCtrl+S',
-                click () {  sendReq('SaveFile');    }
+                click() { sendReq('SaveFile'); }
             },{
                 label: 'Save As', accelerator: 'CmdOrCtrl+Shift+S',
-                click () {  sendReq('SaveAsFile');  }
-            },{type: 'separator'},{
+                click() { sendReq('SaveAsFile'); }
+            },{
+                type: 'separator'
+            },{
                 label: 'Export',
                 accelerator: 'CmdOrCtrl+E',
-                click () {  sendReq('ExportImage'); }
+                click() { sendReq('ExportImage'); }
             }
         ]
     },{
         label: 'Edit',
-        submenu:[
+        submenu: [
             {
                 label: 'Undo', accelerator: 'CmdOrCtrl+Z',
                 click () {  sendReq('Undo');    }
@@ -72,15 +74,13 @@ const menuTemplate = [
         ]
     },{
         role: 'help',
-        submenu:[
-            {
-                label: 'Learn More',
-                accelerator: 'CmdOrCtrl+H',
-                click () {
-                    createInfoWindow();
-                }
+        submenu: [{
+            label: 'Learn More',
+            accelerator: 'CmdOrCtrl+H',
+            click () {
+                createInfoWindow();
             }
-        ]
+        }]
     }
 ];
 
@@ -89,15 +89,15 @@ if (process.platform === 'darwin') {
   menuTemplate.unshift({
     label: app.getName(),
     submenu: [
-      {role: 'about'},
-      {type: 'separator'},
-      {role: 'services', submenu: []},
-      {type: 'separator'},
-      {role: 'hide'},
-      {role: 'hideothers'},
-      {role: 'unhide'},
-      {type: 'separator'},
-      {role: 'quit'}
+        {role: 'about'},
+        {type: 'separator'},
+        {role: 'services', submenu: []},
+        {type: 'separator'},
+        {role: 'hide'},
+        {role: 'hideothers'},
+        {role: 'unhide'},
+        {type: 'separator'},
+        {role: 'quit'}
     ]
   })
 }
@@ -110,38 +110,36 @@ let infoWin;
 
 function createWindow() {
     // Create browser window
-
+    
     let pos = store.get('windowPos');
     let x = pos[0];
     let y = pos[1];
-
+    
     let shape = store.get('windowSize');
     let width = shape[0];
     let height = shape[1];
-
+    
     win = new BrowserWindow({width: width, height: height, x: x, y: y, icon: path.join(__dirname, '/res/icons/icon.png')});
-
+    
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file',
         slashes: true
     }));
-
+    
     // Open devtool
     // win.webContents.openDevTools();
-
+    
     const menu = Menu.buildFromTemplate(menuTemplate);
-
+    
     Menu.setApplicationMenu(menu);
-
+    
     win.on('resize', () => {
-        let size = win.getSize();
-        store.set('windowSize', size);
+        store.set('windowSize', win.getSize());
     });
-
+    
     win.on('move', () => {
-        let pos = win.getPosition();
-        store.set('windowPos', pos);
+        store.set('windowPos', win.getPosition());
     })
     
     win.on('close', (e) => {
@@ -164,9 +162,9 @@ function createInfoWindow() {
         protocol: 'file',
         slashes: true
     }));
-
+    
     // infoWin.webContents.openDevTools();
-
+    
     infoWin.on('close', (e) => {
         infoWin = null;
     });
@@ -179,9 +177,8 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed
 app.on('window-all-closed', () => {
-    if(process.platform != 'darwin'){
+    if(process.platform !== 'darwin')
         app.quit();
-    }
 });
 
 
@@ -189,7 +186,7 @@ ipcMain.on('renderer-response', (event, arg) => {
     switch(arg.msg) {
       case 'Exit':
         // https://github.com/sindresorhus/electron-store
-        safeExit=true;
+        safeExit = true;
         app.quit();
         break;
     }
