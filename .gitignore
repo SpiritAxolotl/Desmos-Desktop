@@ -1,4 +1,6 @@
-dist/*
-node_modules/*
+.DS_Store
+dist/**
+node_modules/**
 package-lock.json
 src/js/calculator_m.js
+www.desmos.com/**
