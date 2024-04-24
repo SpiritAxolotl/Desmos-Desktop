@@ -4,7 +4,7 @@
 
 [Desmos](https://www.desmos.com/about) 是一款优秀的、免费的在线数学函数计算器。它基于JavaScript，有在线版和手机版。这里是一个基于[Electron](http://electron.atom.io/)的**简单的离线桌面版**，可以离线绘制和保存以及输出截图。支持linux, Mac 和 Win平台(目前还没有在Mac上尝试，留下贫穷的眼泪...)。
 
-![app](./res/app.png)
+![app](./assets/app.png)
 
 ## Install
 
@@ -22,7 +22,7 @@ npm run dist
 cd dist && ls   # WOW! Then move the package wherever you want. 
 ```
 
-On linux, you need edit ./res/appimagekit-desmos.desktop properly and move it to ./local/share/applications.
+On linux, you need edit ./assets/appimagekit-desmos.desktop properly and move it to ./local/share/applications.
 
 ## Dependencies
 - [Node.js](https://nodejs.org/en/)
@@ -44,10 +44,10 @@ Now you can use this simple app to
 Try open `.des` files in 'examples'.
 
 <!--add alt text to these at some point-->
-<img src="res/examples/Cardioid.png" width="200"/> <img src="res/examples/Folded Conic Section.png" width="200"/> <img src="res/examples/Folded Conic Section2.png" width="200"/>
+<img src="assets/examples/Cardioid.png" width="200"/> <img src="assets/examples/Folded Conic Section.png" width="200"/> <img src="assets/examples/Folded Conic Section2.png" width="200"/>
 
-<img src="res/examples/Folded Conic Section3.png" width="200"/> <img src="res/examples/Brain.png" width="200"/> <img src="res/examples/Mobius2.png" width="200"/>
+<img src="assets/examples/Folded Conic Section3.png" width="200"/> <img src="assets/examples/Brain.png" width="200"/> <img src="assets/examples/Mobius2.png" width="200"/>
 
-<img src="res/examples/Mobius.png" width="200"/> <img src="res/examples/Astroid.png" width="200"/> <img src="res/examples/Powerpuff Grils.png" width="200"/>
+<img src="assets/examples/Mobius.png" width="200"/> <img src="assets/examples/Astroid.png" width="200"/> <img src="assets/examples/Powerpuff Grils.png" width="200"/>
 
 Hope this helpful. Enjoy ;)

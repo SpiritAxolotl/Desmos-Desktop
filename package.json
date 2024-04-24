@@ -1,7 +1,7 @@
 {
   "name": "desmos",
-  "version": "1.0.0",
-  "description": "desmos offline for linux",
+  "version": "1.0.1",
+  "description": "desmos offline",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -21,14 +21,24 @@
   "build": {
     "linux": {
       "category": "Math",
-      "icon": "res/icons/icon.png",
+      "icon": "assets/icons/misc/icon.png",
       "target": [
         "AppImage"
       ]
     },
     "win": {
-      "icon": "res/icons/icon.png"
-    }
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "mac": {
+      "icon": "assets/icons/mac/icon.icns"
+    },
+    "files": [
+      "./build/**/*",
+      "./dist/**/*",
+      "./node_modules/**/*",
+      "./public/**/*",
+      "*.js"
+    ]
   },
   "devDependencies": {
     "electron": "^30.0.1",

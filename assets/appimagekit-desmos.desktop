@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=desmos
-Comment=desmos offline for linux
+Name=Desmos
+Comment=desmos offline
 Exec=path to desmos exec ot appimage
 Terminal=false
 Type=Application

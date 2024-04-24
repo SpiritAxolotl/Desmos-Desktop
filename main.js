@@ -3,7 +3,7 @@ const Store = require('electron-store');
 const path = require('path');
 const url = require('url');
 
-let safeExit = false;
+//let safeExit = false;
 
 const store = new Store({
     defaults: {
@@ -64,7 +64,7 @@ const menuTemplate = [
         submenu: [
             // {role: 'reload'},
             // {role: 'forcereload'},
-            // {role: 'toggledevtools'},
+            {role: 'toggledevtools'},
             // {type: 'separator'},
             {role: 'resetzoom'},
             {role: 'zoomin'},
@@ -106,6 +106,9 @@ if (process.platform === 'darwin') {
 // Init win
 let win;
 let infoWin;
+const platform = process.platform === "win32" ? "win" : "mac"; //need to add linux at some point
+const iconExt = process.platform === "win32" ? "ico" : "icns"; //this too
+const iconPath = path.join(__dirname, `/assets/icons/${platform}/icon.${iconExt}`);
 
 
 function createWindow() {
@@ -119,7 +122,13 @@ function createWindow() {
     let width = shape[0];
     let height = shape[1];
     
-    win = new BrowserWindow({width: width, height: height, x: x, y: y, icon: path.join(__dirname, '/res/icons/icon.png')});
+    win = new BrowserWindow({
+        width: width,
+        height: height,
+        x: x,
+        y: y,
+        icon: iconPath
+    });
     
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
@@ -142,12 +151,12 @@ function createWindow() {
         store.set('windowPos', win.getPosition());
     })
     
-    win.on('close', (e) => {
-        if(!safeExit) {
-            e.preventDefault();
-            sendReq('Exitting');
-        }
-    });
+    /*win.on('close', (e) => {
+        e.preventDefault();
+        //if (!safeExit)
+        sendReq('Exitting');
+        app.quit();
+    });*/
 }
 
 function createInfoWindow() {
@@ -155,7 +164,7 @@ function createInfoWindow() {
         width: 400, height: 450,
         resizable: false,
         parent: win,
-        icon: path.join(__dirname, '/res/icons/icon.png')
+        icon: iconPath
     });
     infoWin.loadURL(url.format({
         pathname: path.join(__dirname, '/src/info.html'),
@@ -172,17 +181,17 @@ function createInfoWindow() {
 
 
 // Run create window
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 
 // Quit when all windows are closed
 app.on('window-all-closed', () => {
-    if(process.platform !== 'darwin')
+    if (process.platform !== 'darwin')
         app.quit();
 });
 
 
-ipcMain.on('renderer-response', (event, arg) => {
+/*ipcMain.on('renderer-response', (event, arg) => {
     switch(arg.msg) {
       case 'Exit':
         // https://github.com/sindresorhus/electron-store
@@ -190,7 +199,7 @@ ipcMain.on('renderer-response', (event, arg) => {
         app.quit();
         break;
     }
-});
+});*/
 
 
 ipcMain.on('renderer-request', (event, arg) => {
