@@ -1,6 +1,6 @@
 # Desmos Desktop
 
-[Desmos](https://www.desmos.com/about) is an advanced graphing calculator implemented as a web application and a mobile application written in JavaScript. Here is a very simple cross-platform desktop version. **Plotting, saving, opening and exporting offlinely** are supportive. Examples are in 'examples' folder.
+[Desmos](https://www.desmos.com/about) is an advanced graphing calculator implemented as a web application and a mobile application written in JavaScript. Here is a very simple cross-platform desktop version. **Plotting, saving, opening and exporting offlinely** are supportive. Examples are in the [`examples/`](./examples/) folder.
 
 [Desmos](https://www.desmos.com/about) 是一款优秀的、免费的在线数学函数计算器。它基于JavaScript，有在线版和手机版。这里是一个基于[Electron](http://electron.atom.io/)的**简单的离线桌面版**，可以离线绘制和保存以及输出截图。支持linux, Mac 和 Win平台(目前还没有在Mac上尝试，留下贫穷的眼泪...)。
 
@@ -8,46 +8,48 @@
 
 ## Install
 
-The executable binary files have been released  [here](https://github.com/DingShizhe/Desmos-Desktop/releases/tag/v1.0.0). There are only win and linux(ubuntu) versions. If you want Mac(or other platforms) version, try to build it.
+The executable binary files for Windows and Linux (Ubuntu) have been released [here](https://github.com/DingShizhe/Desmos-Desktop/releases/tag/v1.0.0). If you want a version for MacOS or another platform, try to build it yourself.
 
-After installation, try to use it to open the `des` files in 'examples'.
+After installation, try to use the newly built app to open the `.des` files in [`examples/`](./examples/).
 
 ## Build
 
-```console
+```bash
 git clone https://github.com/DingShizhe/Desmos-Desktop.git
 cd Desmos-Desktop
 npm install -d
+npm audit fix --force # resolves a macOS issue
 npm run dist
-cd dist && ls   # WOW! Then move the package wherever you want. 
+ls dist
 ```
 
-On linux, you need edit ./assets/appimagekit-desmos.desktop properly and move it to ./local/share/applications.
+On Linux, you need edit [`./assets/appimagekit-desmos.desktop`](./assets/appimagekit-desmos.desktop) properly and move it to `./local/share/applications/`.
 
 ## Dependencies
 - [Node.js](https://nodejs.org/en/)
 - [Electron](http://electron.atom.io/)
 - [Desmos API](https://www.desmos.com/api/)
 
-## Simple Functions (features) Now
-Now you can use this simple app to
+## Features
 - Draw mathematical curves just like the web version
-- Export screenshot as `.png` file
-- Save or reload graph state as `.des` file (just json)
-- Fade out message effect.
-- Note when new a file or close file but current file hasnot been saved
-- Open the last opened file when launch
-- Use 'examples/getDesByUrl.py' to get `.des` file from desmos website
+- Export screenshots as `.png` files
+- Save or reload graph state as a `.des` file (just json)
+- When creating a new file or closing a file, prompt the user to save
+- Open the last opened file upon launch
+- [`./examples/getDesByUrl.py`](./examples/getDesByUrl.py) to get `.des` files from the Desmos website
+<!--- Fade-out message effect-->
 
-## My Artworks (except the last one)
+## Example Graphs
 
-Try open `.des` files in 'examples'.
+Try to open these `.des` files (located in [`examples/`](./examples/)):
 
-<!--add alt text to these at some point-->
-<img src="assets/examples/Cardioid.png" width="200"/> <img src="assets/examples/Folded Conic Section.png" width="200"/> <img src="assets/examples/Folded Conic Section2.png" width="200"/>
+<!--add actual alt text to these at some point-->
+<img src="assets/examples/Cardioid.png" alt="" width="200"/> <img src="assets/examples/Folded Conic Section.png" alt="" width="200"/> <img src="assets/examples/Folded Conic Section2.png" alt="" width="200"/>
 
-<img src="assets/examples/Folded Conic Section3.png" width="200"/> <img src="assets/examples/Brain.png" width="200"/> <img src="assets/examples/Mobius2.png" width="200"/>
+<img src="assets/examples/Folded Conic Section3.png" alt="" width="200"/> <img src="assets/examples/Brain.png" alt="" width="200"/> <img src="assets/examples/Mobius2.png" alt="" width="200"/>
 
-<img src="assets/examples/Mobius.png" width="200"/> <img src="assets/examples/Astroid.png" width="200"/> <img src="assets/examples/Powerpuff Grils.png" width="200"/>
+<img src="assets/examples/Mobius.png" alt="" width="200"/> <img src="assets/examples/Astroid.png" alt="" width="200"/> <img src="assets/examples/Powerpuff Grils.png" alt="" width="200"/>
 
-Hope this helpful. Enjoy ;)
+All of these (except for the last one) were made by [DingShizhe](https://github.com/DingShizhe)
+
+Hope this helpful. Enjoy!
